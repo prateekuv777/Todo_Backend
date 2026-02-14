@@ -1,15 +1,31 @@
 const repo = require("../repositories/task.repository");
 const { v4: uuidv4 } = require("uuid");
 
-exports.createTask = async (data) => {
+async function createTask(data) {
   data.uuid = uuidv4();
-  return repo.createTask(data);
+  return await repo.createTask(data);
+}
+
+async function getAllTasks() {
+  return await repo.getAllTasks();
+}
+
+async function getTaskByUUID(uuid) {
+  return await repo.getTaskByUUID(uuid);
+}
+
+async function updateTask(uuid, data) {
+  return await repo.updateTask(uuid, data);
+}
+
+async function deleteTask(uuid) {
+  return await repo.deleteTask(uuid);
+}
+
+module.exports = {
+  createTask,
+  getAllTasks,
+  getTaskByUUID,
+  updateTask,
+  deleteTask
 };
-
-exports.getAllTasks = () => repo.getAllTasks();
-
-exports.getTaskByUUID = (uuid) => repo.getTaskByUUID(uuid);
-
-exports.updateTask = (uuid, data) => repo.updateTask(uuid, data);
-
-exports.deleteTask = (uuid) => repo.deleteTask(uuid);

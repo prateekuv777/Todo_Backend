@@ -1,7 +1,12 @@
 const service = require("../services/task.service");
 
 exports.createTask = async (req, res) => {
+  console.log("req",req.body)
+  // console.log("req param id",req.params.id)
+  // console.log("res",res)
+  // return;
   const task = await service.createTask(req.body);
+  console.log("new created Task Data", task)
   res.json(task);
 };
 
